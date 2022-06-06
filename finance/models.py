@@ -1,0 +1,80 @@
+from django.db import models
+
+
+class F_DOCENTETE(models.Model):
+    do_domaine = models.CharField(max_length=25, null=True, blank=True)
+    do_type = models.CharField(max_length=25, null=True, blank=True)
+    do_piece = models.CharField(max_length=25, null=True, blank=True)
+    cb_do_piece = models.CharField(max_length=25, null=True, blank=True) #CHECK
+    do_date = models.DateField(null=True, blank=True)
+    do_ref = models.CharField(max_length=25, null=True, blank=True)
+    do_tiers = models.CharField(max_length=25, null=True, blank=True) #CHECK
+    cb_do_tiers = models.CharField(max_length=25, null=True, blank=True) #CHECK
+    co_no = models.CharField(max_length=25, null=True, blank=True)
+    cb_co_no = models.CharField(max_length=25, null=True, blank=True)
+    do_period = models.CharField(max_length=25, null=True, blank=True)
+    do_devise = models.CharField(max_length=25, null=True, blank=True)
+    do_cours = models.CharField(max_length=25, null=True, blank=True)
+    de_no = models.CharField(max_length=25, null=True, blank=True)
+    cb_de_no = models.CharField(max_length=25, null=True, blank=True)
+    li_no = models.CharField(max_length=25, null=True, blank=True)
+    cb_li_no = models.CharField(max_length=25, null=True, blank=True)
+    cb_ct_num_payeur = models.CharField(max_length=25, null=True, blank=True)
+    do_exp_edit = models.CharField(max_length=25, null=True, blank=True)
+    do_nb_facture = models.CharField(max_length=25, null=True, blank=True)
+    do_bl_facture = models.CharField(max_length=25, null=True, blank=True)
+    
+class F_CREGLEMENT(models.Model):
+    rg_no = models.IntegerField(null=True, blank=True)
+    ct_num_payeur = models.CharField(max_length=25, null=True, blank=True)
+    cb_ct_num_payeur = models.CharField(max_length=25, null=True, blank=True)
+    rg_date = models.DateField(null=True, blank=True)
+    rg_reference = models.CharField(max_length=25, null=True, blank=True)
+    rg_libelle = models.CharField(max_length=25, null=True, blank=True)
+    rg_montant = models.FloatField(null=True, blank=True)
+    rg_montant_dev = models.FloatField(null=True, blank=True)
+    n_reglement = models.CharField(max_length=25, null=True, blank=True)
+    rg_impute = models.IntegerField(null=True, blank=True)
+    rg_compta = models.IntegerField(null=True, blank=True)
+    ec_no = models.CharField(max_length=25, null=True, blank=True) #CHECK
+    rg_type = models.IntegerField(null=True, blank=True) #CHECK
+    rg_cours = models.IntegerField(null=True, blank=True)
+    n_devise = models.IntegerField(null=True, blank=True)
+    jo_num = models.CharField(max_length=25, null=True, blank=True)
+    cg_num_cont = models.CharField(max_length=255, null=True, blank=True)
+    rg_impaye = models.DateField(null=True, blank=True)
+    cg_num = models.CharField(max_length=25, null=True, blank=True)
+    rg_type_reg = models.IntegerField(null=True, blank=True)
+    rg_heure = models.CharField(max_length=25, null=True, blank=True)
+    rg_piece = models.CharField(max_length=25, null=True, blank=True)
+    rg_banque = models.IntegerField(null=True, blank=True)
+    ct_num_payeur_orig = models.CharField(max_length=25, null=True, blank=True)
+    rg_date_ech_cont = models.DateField(null=True, blank=True)
+    cg_num_ecart = models.CharField(max_length=25, null=True, blank=True)
+    jo_num_ecart = models.CharField(max_length=25, null=True, blank=True)
+    rg_montant_ecart = models.FloatField(null=True, blank=True)
+    
+class F_REGLECH(models.Model):
+    rg_no = models.CharField(primary_key=True, max_length=25)
+    dr_no = models.CharField(max_length=25, null=True, blank=True)
+    do_domaine = models.CharField(max_length=25, null=True, blank=True)
+    do_type = models.CharField(max_length=25, null=True, blank=True)
+    do_piece = models.CharField(max_length=25, null=True, blank=True)
+    rc_montant = models.CharField(max_length=25, null=True, blank=True)
+    rg_type_reg = models.CharField(max_length=25, null=True, blank=True)
+    
+class F_DOCREGL(models.Model):
+    dr_no = models.CharField(max_length=25, null=True, blank=True)
+    do_domaine = models.CharField(max_length=25, null=True, blank=True)
+    do_type = models.CharField(max_length=25, null=True, blank=True)
+    do_piece = models.CharField(max_length=25, null=True, blank=True)
+    dr_type_regl = models.CharField(max_length=25, null=True, blank=True)
+    dr_date = models.DateField(null=True, blank=True)
+    dr_libelle = models.CharField(max_length=25, null=True, blank=True)
+    dr_pourcent = models.FloatField(null=True, blank=True)
+    dr_montant = models.FloatField(null=True, blank=True)
+    dr_montant_dev = models.FloatField(null=True, blank=True)
+    dr_equil = models.CharField(max_length=25, null=True, blank=True)
+    ec_no = models.IntegerField(null=True, blank=True)
+    dr_regle = models.CharField(max_length=25, null=True, blank=True)
+    n_reglement = models.CharField(max_length=25, null=True, blank=True)

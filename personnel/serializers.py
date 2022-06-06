@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 
 from django.contrib.auth.hashers import make_password
 
-from .models import User
+from .models import User, Permis, Passeport, Visite
 
 
 class UserSerializer(serializers.ModelSerializer): ##### TO DO #####
@@ -69,3 +69,36 @@ class UserSerializer(serializers.ModelSerializer): ##### TO DO #####
         
         instance.save()
         return instance
+    
+class PermisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Permis
+        fields = '__all__'
+        
+class PermisGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Permis
+        fields = '__all__'
+        depth = 1
+        
+class PasseportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passeport
+        fields = '__all__'
+        
+class PasseportGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passeport
+        fields = '__all__'
+        depth = 1
+        
+class VisiteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Visite
+        fields = '__all__'
+        
+class VisiteGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Visite
+        fields = '__all__'
+        depth = 1

@@ -43,6 +43,14 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     
     'personnel',
+    'flotte',
+    'achatstock',
+    'finance',
+    'garage',
+    'location',
+    'maintenance',
+    'tiers',
+    'transport',
 ]
 
 MIDDLEWARE = [

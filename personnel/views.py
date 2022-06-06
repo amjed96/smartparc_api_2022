@@ -15,6 +15,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 
+from .models import Permis, Passeport, Visite
+from .serializers import UserSerializer, PermisSerializer, PermisGetSerializer, PasseportSerializer, PasseportGetSerializer, VisiteSerializer, VisiteGetSerializer
 
 class UserViewset(viewsets.ModelViewSet): ##### TO DO #####
     
@@ -126,3 +128,45 @@ class CustomAuthToken(ObtainAuthToken):
 #                 return Response({'success': 'User created successfully'})
 #         else:
 #             return Response({'error': 'Passwords do not match'})
+
+class PermisViewset(viewsets.ModelViewSet):
+    queryset = Permis.objects.all()
+    serializer_class = PermisSerializer
+    
+    def __str__(self):
+        return self.name
+    
+class PermisGetViewset(viewsets.ModelViewSet):
+    queryset = Permis.objects.all()
+    serializer_class = PermisGetSerializer
+    
+    def __str__(self):
+        return self.name
+    
+class PasseportViewset(viewsets.ModelViewSet):
+    queryset = Passeport.objects.all()
+    serializer_class = PasseportSerializer
+    
+    def __str__(self):
+        return self.name
+    
+class PasseportGetViewset(viewsets.ModelViewSet):
+    queryset = Passeport.objects.all()
+    serializer_class = PasseportGetSerializer
+    
+    def __str__(self):
+        return self.name
+    
+class VisiteViewset(viewsets.ModelViewSet):
+    queryset = Visite.objects.all()
+    serializer_class = VisiteSerializer
+    
+    def __str__(self):
+        return self.name
+    
+class VisiteGetViewset(viewsets.ModelViewSet):
+    queryset = Visite.objects.all()
+    serializer_class = VisiteGetSerializer
+    
+    def __str__(self):
+        return self.name
