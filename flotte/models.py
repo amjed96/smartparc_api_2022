@@ -30,8 +30,10 @@ class Vehicule(models.Model):
     
 class Affectation(models.Model):
     
-    vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_affectation', blank=True)
-    chauffeur = models.ForeignKey('personnel.User', null=True, on_delete=models.SET_NULL, related_name='chauffeur_affectation', blank=True)
+    # vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_affectation', blank=True)
+    vehicule = models.OneToOneField('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_affectation', blank=True)
+    # chauffeur = models.ForeignKey('personnel.User', null=True, on_delete=models.SET_NULL, related_name='chauffeur_affectation', blank=True)
+    chauffeur = models.OneToOneField('personnel.User', null=True, on_delete=models.SET_NULL, related_name='chauffeur_affectation', blank=True)
     date_debut = models.DateField(blank=True, null=True)
     date_fin = models.DateField(blank=True, null=True)
     etat = models.BooleanField(blank=True, null=True)
@@ -49,7 +51,8 @@ class ContratAchat(models.Model):
     
     date = models.DateField()
     vendeur = models.CharField(max_length=25, blank=True, null=True)
-    vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_contrat_achat', blank=True)
+    # vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_contrat_achat', blank=True)
+    vehicule = models.OneToOneField('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_contrat_achat', blank=True)
     marque = models.CharField(max_length=25, blank=True, null=True)
     modele = models.CharField(max_length=25, blank=True, null=True)
     chassis = models.CharField(max_length=25, blank=True, null=True)
@@ -58,7 +61,8 @@ class ContratAchat(models.Model):
     
 class ContratLocation(models.Model):
     
-    vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_contrat_location', blank=True)
+    # vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_contrat_location', blank=True)
+    vehicule = models.OneToOneField('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_contrat_location', blank=True)
     date_debut = models.DateField(blank=True, null=True)
     date_fin = models.DateField(blank=True, null=True)
     marque = models.CharField(max_length=25, blank=True, null=True)

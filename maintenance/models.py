@@ -31,6 +31,7 @@ class PieceRechange(models.Model):
     unite = models.CharField(max_length=25, null=True)
     prix = models.IntegerField(null=True)
     nombre = models.IntegerField(null=True)
+    # ManyToOne avec Vehicule 0..0
     
 class PlanEntretien(models.Model):
     

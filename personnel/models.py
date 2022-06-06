@@ -33,14 +33,16 @@ class Permis(models.Model):
 
     reference = models.CharField(max_length=10, primary_key=True)
     date = models.DateField(null=True, blank=True)
-    personnel = models.ForeignKey('personnel.User', null=True, on_delete=models.CASCADE, related_name='permis_personnel', blank=True)
+    # personnel = models.ForeignKey('personnel.User', null=True, on_delete=models.CASCADE, related_name='permis_personnel', blank=True)
+    personnel = models.OneToOneField('personnel.User', null=True, on_delete=models.SET_NULL, related_name='permis_personnel', blank=True)
     type = models.CharField(null=True, max_length=10, blank=True)
     
 class Passeport(models.Model):
 
     numero = models.CharField(max_length=25, primary_key=True)
     type = models.CharField(null=True, max_length=25, blank=True)
-    personnel = models.ForeignKey('personnel.User', null=True, on_delete=models.CASCADE, related_name='passeport_personnel', blank=True)
+    # personnel = models.ForeignKey('personnel.User', null=True, on_delete=models.CASCADE, related_name='passeport_personnel', blank=True)
+    personnel = models.OneToOneField('personnel.User', null=True, on_delete=models.CASCADE, related_name='passeport_personnel', blank=True)
     nationalite = models.CharField(null=True, max_length=25, blank=True)
     adresse_naissance = models.CharField(null=True, max_length=25, blank=True)
     sexe = models.CharField(null=True, max_length=25, blank=True)
