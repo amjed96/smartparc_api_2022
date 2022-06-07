@@ -1,4 +1,5 @@
 from asyncio.windows_events import NULL
+from dataclasses import fields
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
@@ -33,6 +34,7 @@ class UserSerializer(serializers.ModelSerializer): ##### TO DO #####
             "user_permissions",
             "permis_personnel",
             "passeport_personnel",
+            "visites_personnel",
         ]
         # [
         #     'id',
@@ -107,6 +109,35 @@ class UserSerializer(serializers.ModelSerializer): ##### TO DO #####
         
         instance.save()
         return instance
+
+class UserGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "last_login",
+            "is_superuser",
+            "first_name",
+            "last_name",
+            "is_staff",
+            "is_active",
+            "date_joined",
+            "cin",
+            "date_naissance",
+            "telephone",
+            "qualification",
+            "type_permis",
+            "username",
+            "password",
+            "email",
+            "affecte",
+            "groups",
+            "user_permissions",
+            "permis_personnel",
+            "passeport_personnel",
+            "visites_personnel",
+        ]
+        depth = 1
     
 class PermisSerializer(serializers.ModelSerializer):
     class Meta:

@@ -9,7 +9,7 @@ from rest_framework.decorators import action
 from django.db import transaction
 
 from .models import User
-from .serializers import UserSerializer
+from .serializers import UserGetSerializer, UserSerializer
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -50,6 +50,11 @@ class UserViewset(viewsets.ModelViewSet): ##### TO DO #####
         queryset = User.objects.filter(passeport_personnel = None)
         return Response(UserSerializer(queryset, many=True).data)
 
+    @action(detail=True, methods=['get'])
+    def retrieve_details(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = UserGetSerializer(instance)
+        return Response(serializer.data)
 
     @transaction.atomic
     @action(detail=True, methods=['post'])
