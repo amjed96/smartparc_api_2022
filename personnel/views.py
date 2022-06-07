@@ -34,7 +34,23 @@ class UserViewset(viewsets.ModelViewSet): ##### TO DO #####
             queryset = queryset.filter(qualification = qualification)
         
         return queryset
+
+    @action(detail=False, methods=['get'])
+    def get_chauffeur_unaffected(self, request):
+        queryset = User.objects.filter(qualification = 'Chauffeur', affecte = False)
+        return Response(UserSerializer(queryset,many=True).data)
     
+    @action(detail=False, methods=['get'])
+    def get_personnel_permis(self, request):
+        queryset = User.objects.filter(permis_personnel = None)
+        return Response(UserSerializer(queryset, many=True).data)
+
+    @action(detail=False, methods=['get'])
+    def get_personnel_passeport(self, request):
+        queryset = User.objects.filter(passeport_personnel = None)
+        return Response(UserSerializer(queryset, many=True).data)
+
+
     @transaction.atomic
     @action(detail=True, methods=['post'])
     def affecter(self, request, pk):

@@ -11,7 +11,45 @@ class UserSerializer(serializers.ModelSerializer): ##### TO DO #####
     class Meta:
         User = get_user_model()
         model = User
-        fields = '__all__'
+        fields = [
+            "id",
+            "last_login",
+            "is_superuser",
+            "first_name",
+            "last_name",
+            "is_staff",
+            "is_active",
+            "date_joined",
+            "cin",
+            "date_naissance",
+            "telephone",
+            "qualification",
+            "type_permis",
+            "username",
+            "password",
+            "email",
+            "affecte",
+            "groups",
+            "user_permissions",
+            "permis_personnel",
+            "passeport_personnel",
+        ]
+        # [
+        #     'id',
+        #     'cin',
+        #     'date_naissance',
+        #     'telephone',
+        #     'qualification',
+        #     'type_permis',
+        #     'username',
+        #     'password',
+        #     'email',
+        #     'affecte',
+        #     'permis_personnel',
+        #     'passeport_personnel',
+        # ]
+
+        # permis_personnel
         
     # def create(self, validated_data):
     #     '''user = User.objects.create(

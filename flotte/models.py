@@ -25,18 +25,18 @@ class Vehicule(models.Model):
     nombre_places = models.IntegerField(blank=True, null=True)
     nombre_debout = models.IntegerField(blank=True, null=True)
     cylidree = models.IntegerField(blank=True, null=True)
-    a_louer = models.BooleanField(blank=True, null=True)
-    affecte = models.BooleanField()
+    a_louer = models.BooleanField(default=False,blank=True)
+    affecte = models.BooleanField(default=False,blank=True)
     
 class Affectation(models.Model):
     
-    # vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_affectation', blank=True)
-    vehicule = models.OneToOneField('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_affectation', blank=True)
-    # chauffeur = models.ForeignKey('personnel.User', null=True, on_delete=models.SET_NULL, related_name='chauffeur_affectation', blank=True)
-    chauffeur = models.OneToOneField('personnel.User', null=True, on_delete=models.SET_NULL, related_name='chauffeur_affectation', blank=True)
+    vehicule = models.ForeignKey('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_affectation', blank=True)
+    # vehicule = models.OneToOneField('flotte.Vehicule', null=True, on_delete=models.SET_NULL, related_name='vehicule_affectation', blank=True)
+    chauffeur = models.ForeignKey('personnel.User', null=True, on_delete=models.SET_NULL, related_name='chauffeur_affectation', blank=True)
+    # chauffeur = models.OneToOneField('personnel.User', null=True, on_delete=models.SET_NULL, related_name='chauffeur_affectation', blank=True)
     date_debut = models.DateField(blank=True, null=True)
     date_fin = models.DateField(blank=True, null=True)
-    etat = models.BooleanField(blank=True, null=True)
+    etat = models.BooleanField(default=True, blank=True)
     
 class Consommation(models.Model):
     
