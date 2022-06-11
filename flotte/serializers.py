@@ -35,8 +35,44 @@ class VehiculeSerializer(serializers.ModelSerializer):
             'affecte',
             'vehicule_contrat_achat',
             'vehicule_contrat_location',
+            'vehicule_affectation',
+            'vehicule_consommation',
         ]
-        # vehicule_contrat_achat
+
+class VehiculeGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vehicule
+        fields = [
+            'immatriculation',
+            'num_serie',
+            'kilometrage',
+            'engin',
+            'consommation',
+            'entretien',
+            'constructeur',
+            'type_commercial',
+            'activite',
+            'genre',
+            'type_constructeur',
+            'date_pmc',
+            'carrosserie',
+            'energie',
+            'puissance_fiscale',
+            'nombre_essieux',
+            'charge_utile',
+            'poids_vide',
+            'ptac_ptra',
+            'nombre_places',
+            'nombre_debout',
+            'cylidree',
+            'a_louer',
+            'affecte',
+            'vehicule_contrat_achat',
+            'vehicule_contrat_location',
+            'vehicule_affectation',
+            'vehicule_consommation',
+        ]
+        depth = 2
         
 class AffectationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -47,7 +83,7 @@ class AffectationGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Affectation
         fields = '__all__'
-        depth=1
+        depth = 1
         
 class ContratLocationSerializer(serializers.ModelSerializer):
     class Meta:

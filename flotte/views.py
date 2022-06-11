@@ -3,7 +3,7 @@ from rest_framework.decorators import action
 from django.db import transaction
 from rest_framework.response import Response
 
-from .serializers import AffectationGetSerializer, VehiculeSerializer, AffectationSerializer, ContratLocationSerializer, ContratAchatSerializer, ConsommationSerializer
+from .serializers import AffectationGetSerializer, VehiculeGetSerializer, VehiculeSerializer, AffectationSerializer, ContratLocationSerializer, ContratAchatSerializer, ConsommationSerializer
 
 from .models import Vehicule, Affectation, ContratLocation, ContratAchat, Consommation
 from personnel.models import User
@@ -34,9 +34,11 @@ class VehiculeViewset(viewsets.ModelViewSet):
 
         return Response(VehiculeSerializer(queryset, many=True).data)
 
-
-    def __str__(self):
-        return self.name
+    @action(detail=True, methods=['get'])
+    def retrieve_details(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = VehiculeGetSerializer(instance)
+        return Response(serializer.data)
     
     @transaction.atomic
     @action(detail=True, methods=['post'])
@@ -55,6 +57,9 @@ class VehiculeViewset(viewsets.ModelViewSet):
         vehicule.save()
         
         return Response()
+
+    def __str__(self):
+        return self.name
     
 class AffectationViewset(viewsets.ModelViewSet):
     queryset = Affectation.objects.all()

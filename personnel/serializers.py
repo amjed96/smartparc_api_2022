@@ -36,22 +36,6 @@ class UserSerializer(serializers.ModelSerializer): ##### TO DO #####
             "passeport_personnel",
             "visites_personnel",
         ]
-        # [
-        #     'id',
-        #     'cin',
-        #     'date_naissance',
-        #     'telephone',
-        #     'qualification',
-        #     'type_permis',
-        #     'username',
-        #     'password',
-        #     'email',
-        #     'affecte',
-        #     'permis_personnel',
-        #     'passeport_personnel',
-        # ]
-
-        # permis_personnel
         
     # def create(self, validated_data):
     #     '''user = User.objects.create(
