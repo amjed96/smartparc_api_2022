@@ -14,6 +14,7 @@ from location.views import ContratLocationViewset
 from maintenance.views import DemandeInterventionViewset, InterventionViewset, PieceRechangeViewset, PlanEntretienViewset
 from tiers.views import TiersViewset, ContactViewset, ContactGetViewset
 from transport.views import FicheTrajetViewset, DossierVoyageViewset, DossierVoyageGetViewset, FicheTrajetGetViewset
+from garage.views import DemandeInterventionGarageViewset, InterventionGarageViewset, PieceRechangeGarageViewset, PlanEntretienGarageViewset
 
 from rest_framework.authtoken.views import obtain_auth_token
 
@@ -66,6 +67,12 @@ router.register(r'dossier-voyage', DossierVoyageViewset, basename='dossier-voyag
 router.register(r'dossier-voyage-get', DossierVoyageGetViewset, basename='dossier-voyage')
 router.register(r'fiche-trajet', FicheTrajetViewset, basename='fiche-trajet')
 router.register(r'fiche-trajet-get', FicheTrajetGetViewset, basename='fiche-trajet')
+
+#Garage
+router.register(r'demande-intervention-garage', DemandeInterventionGarageViewset, basename='demande-intervention-garage')
+router.register(r'intervention-garage', InterventionGarageViewset, basename='intervention-garage')
+router.register(r'piece-rechange-garage', PieceRechangeGarageViewset, basename='piece-rechange-garage')
+router.register(r'plan-entretien-garage', PlanEntretienGarageViewset, basename='plan-entretien-garage')
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
